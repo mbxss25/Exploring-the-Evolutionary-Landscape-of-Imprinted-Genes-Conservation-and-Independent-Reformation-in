@@ -58,8 +58,17 @@ All the output data is submitted in .zip format,  Thus to view it,it should be d
 The expected output for each submitted script will be tagged below it. 
 
 ---------------------------------------------
+## Installation
 
+Most  of the moducle utilized in this study were readily available on the Ada, thus there was not as such requirement of any specific installation. The module needsto be used were availed by executing code "module avail modulename".
 
+Only MAFFT, IQtree and FigTree were the modules that were downloaded. The sources are mentioned below
+
+MAFFT: conda install bioconda::mafft
+
+IQtree: conda install -c bioconda iqtree
+
+FigTree: http://tree.bio.ed.ac.uk/software/figtree/
 
 ---------------------------------------------
 
