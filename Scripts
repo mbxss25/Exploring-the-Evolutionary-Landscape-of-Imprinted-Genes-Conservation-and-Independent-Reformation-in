@@ -404,6 +404,5 @@ python cluster_ready.py
 echo "done prcoessing"
 
 #output file: 11. ready_cluster (homologous sequences)
-#The file 10. extracted sequences after blast complete_gene_cluster.zip is similar file to file no.11, however it is mixture of all the sequences that show hits in BLAST, the above code give output file 11.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
