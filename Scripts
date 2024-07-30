@@ -176,7 +176,7 @@ output file: 5_aa_data.zip
 directory="./aa_data"
 
 # Define the output file where the merged FASTA will be saved
-output_file="./aa_merged_x"
+output_file="./merged_all_aminoacids"
 
 # Ensure the output file is empty
 > "$output_file"
@@ -193,3 +193,5 @@ echo "All FASTA files have been merged into $output_file"
 
 Output file: 6_merged_all_aminoacids.fasta.zip
 ---------------------------------------------------------
+# For extracting the suquencesfrom the concated amino acid file, making a gene cluster.
+
