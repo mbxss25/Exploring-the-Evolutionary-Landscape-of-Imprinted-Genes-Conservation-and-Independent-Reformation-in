@@ -465,8 +465,9 @@ echo "done prcoessing"
 #to built the phylogenetic trees, utilized FigTree.
 
 #Intallation of IQtree is pre-requisite 
+conda install -c bioconda iqtree
 
-##!/bin/bash
+#!/bin/bash
 
 #SBATCH --partition=defq
 #SBATCH --nodes=1
