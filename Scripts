@@ -222,3 +222,48 @@ Note: This code is just for single file, executed manually for each and every ge
 Output file: 7. merged_cluster.zip (This is directory where the output of above code is stored by the name of "ampd3_cluster", and similar genes utilized in study.)
 
 ---------------------------------------------------------
+# Making database for the BLAST.
+
+#!/bin/bash
+
+#SBATCH --partition=defq
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=50g
+#SBATCH --time=10:00:00
+#SBATCH --job-name=mkdatabase01
+#SBATCH --output=/gpfs01/home/mbxss25/slurm-%x-%j.out
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=mbxss25@exmail.nottingham.ac.uk
+
+# Directory where your gene cluster FASTA files are stored
+CLUSTER_DIR="./merged_clusters"
+
+# Directory to store the created BLAST databases
+DB_DIR="./new_blastmkdata"
+
+# Create the database directory if it does not exist
+mkdir -p $DB_DIR
+
+# Load BLAST module if necessary
+module load blast-uoneasy/2.14.1-gompi-2023a                #for ada
+
+# Loop through each FASTA file in the cluster directory
+for fasta_file in $CLUSTER_DIR/*.fasta; do
+    # Get the base name for the fasta file to name the database
+    base_name=$(basename $fasta_file .fasta)
+
+    # Create a BLAST database for each FASTA file
+    makeblastdb -in $fasta_file -dbtype prot -out $DB_DIR/$base_name -title "$base_name DB"
+
+    echo "Database created for $base_name at $DB_DIR/$base_name"
+done
+
+echo "All databases have been created."
+
+Output file: 8. new_blastmkdata.zip 
+
+#The code above make database for the BLAST. this generates pdb, phr, pin, pjs, psq, ptf and pto files for each grnrcluster.
+
+---------------------------------------------------------
