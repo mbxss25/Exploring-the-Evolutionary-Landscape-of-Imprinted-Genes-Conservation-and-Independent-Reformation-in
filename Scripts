@@ -466,6 +466,44 @@ echo "done prcoessing"
 
 #Intallation of IQtree is pre-requisite 
 
-#
+##!/bin/bash
+
+#SBATCH --partition=defq
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=50g
+#SBATCH --time=10:00:00
+#SBATCH --job-name=iqtree01
+#SBATCH --output=/gpfs01/home/mbxss25/slurm-%x-%j.out
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=mbxss25@exmail.nottingham.ac.uk
+
+# Directory containing your aligned sequences
+ALIGNED_SEQ_DIR="./aligned_sequences"
+
+# Output directory for the trees
+OUTPUT_DIR="./output_trees"
+mkdir -p "$OUTPUT_DIR"
+
+# Activate the Conda environment where IQ-TREE is installed
+conda activate iqtree
+
+# Loop over each aligned fasta file in the directory
+for FILE in "$ALIGNED_SEQ_DIR"/*.fasta; do
+    # Extract the base name for output naming
+    BASENAME=$(basename "$FILE" .fasta)
+
+    # Command to run IQ-TREE, adjust parameters as needed
+    iqtree -s "$FILE" -m TEST -bb 1000 -nt AUTO -pre "$OUTPUT_DIR/$BASENAME"
+
+    # -m TEST automatically determines the best-fit model of DNA/protein evolution
+    # -bb 1000 runs 1000 ultrafast bootstrap replicates
+    # -nt AUTO lets IQ-TREE decide the best number of threads to use
+    # -pre specifies a prefix for all output files
+done
+
+echo "All genetic trees have been built and are stored in $OUTPUT_DIR."
+
 
 
