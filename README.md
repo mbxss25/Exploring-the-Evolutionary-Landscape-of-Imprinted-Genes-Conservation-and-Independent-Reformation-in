@@ -49,13 +49,15 @@ I extend my gratitude to the staffs who helped us to resolve technical problems 
 ---------------------------------------------
 ## Note
 
-All the codes are wriiten in bash scripts. 
+All the codes are wriiten in bash scripts, Thus chmod +x filename.sh is used for each an every script in sbatch to make it executable. 
+
+Python scripts are saved in .py format, however are executed in sbatch format.
 
 Output of each and every written code is present on the repository.
 
 All the output data is submitted in .zip format,  Thus to view it,it should be downloaded.
 
-The expected output for each submitted script will be tagged below it. 
+The expected output for each submitted script will be tagged below it will file number. 
 
 ---------------------------------------------
 ## Installation
@@ -71,5 +73,24 @@ IQtree: conda install -c bioconda iqtree
 FigTree: http://tree.bio.ed.ac.uk/software/figtree/
 
 ---------------------------------------------
+## Uploaded files 
 
+1. selected_genes.zip
+2. query_seqs.zip
+3_subject_dborg.zip
+4_subject_db.zip
+5_aa_data.zip
+6_merged_all_aminoacids.fasta.zip
+7. merged_clusters.zip
+8. new_blastmkdata.zip
+9. final_blast.zip
+11. ready_clusters (homologous seqs).zip
+12. aligned_sequences.zip
+13. output_trees.zip
+15. final_scripts.zip
+branch_lenght_data.docx
+chi-sq_test_data.csv
+figtree_vizuals.zip
+others_vs_impnonimp_ANOVA.csv
+gene_set
 
