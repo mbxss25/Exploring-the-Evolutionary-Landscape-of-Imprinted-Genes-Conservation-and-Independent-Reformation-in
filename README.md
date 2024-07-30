@@ -1,5 +1,38 @@
-# The-genome-architecture-
+## Evolution of Genomically Imprinted Gene Clusters in Mammals
+Bioinformatics Individual Research Project (LIFE4137 UNUK) (SUM1 23-24)
 
+NAME: Sahil Shelote
+
+Student ID: 20595980
+
+MSc Bioinformatics
+
+School of Life Sciences
+
+Supervisor: Mary O’connell
+
+## **Overview** 
+The repository created contains the data and scripts for my dissertation of MSc Bioinformatics, University of Nottingham. The project aimed at understanding the evolution of genomically imprinted gene clusters across the mammalian phylogenetic tree. The main goal is to investigate the conservation and divergence of imprinted gene clusters and explore the evolutionary rates of imprinted versus non-imprinted homologs.
+The data of gene was sourced from the geneimprinting.com, this website confirmed the imprinting status of the gene in species. 
+
+## Project Goals
+**1**.Assemble Imprinted Gene Set:
+collected a comprehensive set of imprinted genes from various mammalian species based on experimental evidence. Then Organized the data into a excel sheet  indicating imprinting status for each gene across species.
+**2**.Extracting sequences and translation
+Extracted query sequences for each imprinted gene and their homologs. This material was sourced from the Ensemble and biomart. For translation we used python package "biopython".
+**3**.Finding homologous sequences: 
+The BLAST was used  to findout the homologous sequences by programming a specific parameters. BLAST package used was "blast-uoneasy/2.14.1-gompi-2023a" module available on the ADA-HPC of university of Nottingham.
+**4**.Sequence Alignment
+The sequence alignment was accomplised with the help of MAFFT. The validation was done with the help of the matrix score generated while assembly.
+**5**. Building phylogenetic trees
+The trees were built with the help of the IQtree. Using IQtree allowed use to get standard outline of the phylogenetic trees of the speecies of the gene. We utilized only branch length present in the Newick format for the further analysis.
+**6**Vizualization of the phylogenetic trees
+We find FigTree extremly helpful for vizualizing the data of the phylogenetic tree in high quality. The phylogenetic tree of each and every gene we studied are present on this github repository.
+**7**Statistical study
+To determine which imprinted gene clusters are conserved and which have been disturbed we underwent few statistical studies. We Test the hypothesis if imprinted homologs evolve more rapidly than their non-imprinted counterparts. The part was done utilizing the R.
+
+
+ 
 #all the codes are wriiten in bash scripts.
 
 ---------------------------------------------
