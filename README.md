@@ -88,9 +88,9 @@ FigTree: http://tree.bio.ed.ac.uk/software/figtree/
 12. aligned_sequences.zip
 13. output_trees.zip
 15. final_scripts.zip
-branch_lenght_data.docx
-chi-sq_test_data.csv
-figtree_vizuals.zip
-others_vs_impnonimp_ANOVA.csv
-gene_set (imprinting status of the genes in species collected from geneimprinting.com)
+16.branch_lenght_data.docx
+17.chi-sq_test_data.csv
+18.figtree_vizuals.zip
+19.others_vs_impnonimp_ANOVA.csv
+20.gene_set (imprinting status of the genes in species collected from geneimprinting.com)
 
