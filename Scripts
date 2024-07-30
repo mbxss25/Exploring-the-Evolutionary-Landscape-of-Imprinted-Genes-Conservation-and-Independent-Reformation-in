@@ -1,4 +1,4 @@
-##for replacing ">" in the aceession number with ">speciesname" and "|" with "_" using sed for the ease of identifaction that sequnce belongs to which species.
+## for replacing ">" in the aceession number with ">speciesname" and "|" with "_" using sed for the ease of identifaction that sequnce belongs to which species.
 
 #!/bin/bash
 
@@ -34,4 +34,9 @@ done
 
 echo "All files have been processed."
 
+Input file: 3_subject_dborg.zip
+Output directory: 4_subject_db.zip
+
+Note: zip files are uploaded only because of github kimitation. Original file does not have .zip extention.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
