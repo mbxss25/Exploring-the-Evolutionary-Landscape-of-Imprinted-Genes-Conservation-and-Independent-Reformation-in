@@ -1764,5 +1764,5 @@ chi_square_test <- chisq.test(observed, p = expected / sum(expected))
 print(data)
 print(chi_square_test)
 
-#the entire output is stored in csv format and uploded om this repository as  
+#the entire output is stored in csv format and uploded om this repository as chi-sq_test_data.csv  
 ------------------------------------------------------------------------------------------------------------------------------------------------------
