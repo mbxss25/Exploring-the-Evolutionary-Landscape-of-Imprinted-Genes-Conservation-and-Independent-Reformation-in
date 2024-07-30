@@ -508,4 +508,5 @@ echo "All genetic trees have been built and are stored in $OUTPUT_DIR."
 
 #output file: 13. output_trees.zip
 #bootstrp value set as 1000, it generated multiple files for singlee gene like .nioj, .ckp.gz, .contre, .iqtree, .log, .mldist, .model, splits.
+#Note: we extracted the branch length and uploaded branch lengths of all gene trees. 
 ------------------------------------------------------------------------------------------------------------------------------------------------------
