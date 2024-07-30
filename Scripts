@@ -155,7 +155,7 @@ output_dir="aa_data"
 
 python ./translate.py "$input_dir" "$output_dir"
 
-output file: 
+output file: 5_aa_data.zip
 ---------------------------------------------------------
 #to merge all the translated sequnces in single fasta file.
 
@@ -191,3 +191,5 @@ done
 
 echo "All FASTA files have been merged into $output_file"
 
+Output file: 6_merged_all_aminoacids.fasta.zip
+---------------------------------------------------------
