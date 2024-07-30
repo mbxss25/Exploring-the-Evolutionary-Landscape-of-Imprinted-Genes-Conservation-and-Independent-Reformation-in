@@ -406,3 +406,54 @@ echo "done prcoessing"
 #output file: 11. ready_cluster (homologous sequences)
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# installation of MAFFT is pre-requisite 
+
+# for the sequnce assembly of all the homologoues sequences.
+
+import os
+import subprocess
+
+def align_sequences(input_dir, output_dir):
+    # Ensure the output directory exists
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Iterate over each file in the input directory
+    for file_name in os.listdir(input_dir):
+        if file_name.endswith('.fasta'):
+            input_path = os.path.join(input_dir, file_name)
+            output_path = os.path.join(output_dir, f"aligned_{file_name}")
+            
+            # Command to run MAFFT
+            mafft_command = ['mafft', '--auto', input_path]
+            
+            # Run the MAFFT alignment and capture the output
+            with open(output_path, 'w') as output_file:
+                subprocess.run(mafft_command, stdout=output_file, text=True)
+            print(f"Alignment completed for {file_name} and saved to {output_path}")
+
+# Define the directories
+input_dir = './ready_clusters'
+output_dir = './aligned_sequences'
+
+# Run the alignment function
+align_sequences(input_dir, output_dir)
+
+#sbatch submission for the execution of above python script.
+
+
+#!/bin/bash
+
+#SBATCH --partition=defq
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=50g
+#SBATCH --time=10:00:00
+#SBATCH --job-name=seq_align01
+#SBATCH --output=/gpfs01/home/mbxss25/slurm-%x-%j.out
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=mbxss25@exmail.nottingham.ac.uk
+
+python seq_align01.py                                    #saved filename of the above python script
+
+echo "done prcoessing"
