@@ -39,16 +39,27 @@ To determine which imprinted gene clusters are conserved and which have been dis
 
 ---------------------------------------------
 ## Acknowledgment 
-Opening Statement
+
 I would like to express my sincere gratitude to all those who have supported and encouraged me throughout the course of my research and the writing of this thesis.First and foremost, I am deeply indebted to my supervisor, Mary O’connell, whose expertise, guidance, and patience were invaluable throughout this process. Her insightful feedback pushed me to sharpen my thinking and brought my work to a higher level.
 
 I would also like to thank other staffs in laboratory of life sciences, James McInerney, Jonathan Fenn, Alan Beavan for their unwavering support and for always being available to discuss ideas and provide feedback.
 
 I extend my gratitude to the staffs who helped us to resolve technical problems that occurred while undergoing this study. I would also like to acknowledge the High performace computing cluster of UoN i.e ada. and ChatGPT version 3, which helped me to rectify the code and setup this repository. 
 
+---------------------------------------------
+## Note
 
- 
-#all the codes are wriiten in bash scripts.
+All the codes are wriiten in bash scripts. 
+
+Output of each and every written code is present on the repository.
+
+All the output data is submitted in .zip format,  Thus to view it,it should be downloaded.
+
+The expected output for each submitted script will be tagged below it. 
+
+---------------------------------------------
+
+
 
 ---------------------------------------------
 
