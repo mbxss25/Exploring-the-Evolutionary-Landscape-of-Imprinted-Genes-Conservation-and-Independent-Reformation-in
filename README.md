@@ -92,5 +92,5 @@ branch_lenght_data.docx
 chi-sq_test_data.csv
 figtree_vizuals.zip
 others_vs_impnonimp_ANOVA.csv
-gene_set
+gene_set (imprinting status of the genes in species collected from geneimprinting.com)
 
