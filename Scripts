@@ -34,10 +34,10 @@ done
 
 echo "All files have been processed."
 
-Input file: 1. selected_genes.zip
-Output directory: 2. query_seqs.zip
+#Input file: 1. selected_genes.zip
+#Output directory: 2. query_seqs.zip
 
-Note: zip files are uploaded only because of github limitation. Original file does not have .zip extention.
+#Note: zip files are uploaded only because of github limitation. Original file does not have .zip extention.
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 ## for replacing ">" in the aceession number with ">speciesname" and "|" with "_" using sed for the ease of identifaction that sequnce belongs to which species.
 
@@ -75,10 +75,10 @@ done
 
 echo "All files have been processed."
 
-Input file: 3_subject_dborg.zip
-Output directory: 4_subject_db.zip
+#Input file: 3_subject_dborg.zip
+#Output directory: 4_subject_db.zip
 
-Note: zip files are uploaded only because of github limitation. Original file does not have .zip extention.
+#Note: zip files are uploaded only because of github limitation. Original file does not have .zip extention.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # To translate the DNA sequnces into amino acids, using biopython.
 
@@ -155,7 +155,7 @@ output_dir="aa_data"
 
 python ./translate.py "$input_dir" "$output_dir"
 
-output file: 5_aa_data.zip
+#output file: 5_aa_data.zip
 ---------------------------------------------------------
 #to merge all the translated sequnces in single fasta file.
 
@@ -191,7 +191,7 @@ done
 
 echo "All FASTA files have been merged into $output_file"
 
-Output file: 6_merged_all_aminoacids.fasta.zip
+#Output file: 6_merged_all_aminoacids.fasta.zip
 ---------------------------------------------------------
 # For extracting the suquencesfrom the concated amino acid file, making a gene cluster.
 
@@ -217,9 +217,9 @@ sed -n '/ampd3/p' "$input_file" > "$output_file"
 
 echo "Successfully separated entries containing 'ampd3' into $output_file"
 
-Note: This code is just for single file, executed manually for each and every gene for 100% compliance.
+#Note: This code is just for single file, executed manually for each and every gene for 100% compliance.
 
-Output file: 7. merged_cluster.zip (This is directory where the output of above code is stored by the name of "ampd3_cluster", and similar genes utilized in study.)
+#Output file: 7. merged_cluster.zip (This is directory where the output of above code is stored by the name of "ampd3_cluster", and similar genes utilized in study.)
 
 ---------------------------------------------------------
 # Making database for the BLAST.
@@ -262,8 +262,78 @@ done
 
 echo "All databases have been created."
 
-Output file: 8. new_blastmkdata.zip 
+#Output file: 8. new_blastmkdata.zip 
 
 #The code above make database for the BLAST. this generates pdb, phr, pin, pjs, psq, ptf and pto files for each grnrcluster.
 
 ---------------------------------------------------------
+# BLAST
+
+#!/bin/bash
+
+#SBATCH --partition=defq
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=50g
+#SBATCH --time=10:00:00
+#SBATCH --job-name=final_blast
+#SBATCH --output=/gpfs01/home/mbxss25/slurm-%x-%j.out
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=mbxss25@exmail.nottingham.ac.uk
+
+# Load the BLAST module
+module load blast-uoneasy/2.14.1-gompi-2023a
+
+# Define directories
+QUERY_DIR="./query_seqs"
+DB_DIR="./new_blastmkdata"
+OUT_DIR="./final_blast"
+
+# Ensure output directory exists
+mkdir -p ${OUT_DIR}
+
+# Run BLAST for the specified query and database
+blastp -query ${QUERY_DIR}/ascl2_extracted.fa -db ${DB_DIR}/ascl2_cluster -out ${OUT_DIR}/ascl2_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/casd1_extracted.fa -db ${DB_DIR}/casd1_cluster -out ${OUT_DIR}/casd1_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/cd81_extracted.fa -db ${DB_DIR}/cd81_cluster -out ${OUT_DIR}/cd81_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/cdh15_extracted.fa -db ${DB_DIR}/cdh15_cluster -out ${OUT_DIR}/cdh15_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/cdkn1c_extracted.fa -db ${DB_DIR}/cdkn1c_cluster -out ${OUT_DIR}/cdkn1c_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/commd1_extracted.fa -db ${DB_DIR}/commd1_cluster -out ${OUT_DIR}/commd1_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/dcn_extracted.fa -db ${DB_DIR}/dcn_cluster -out ${OUT_DIR}/dcn_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/dhcr7_extracted.fa -db ${DB_DIR}/dhcr7_cluster -out ${OUT_DIR}/dhcr7_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/dio3_extracted.fa -db ${DB_DIR}/dio3_cluster -out ${OUT_DIR}/dio3_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/dlk1_extracted.fa -db ${DB_DIR}/dlk1_cluster -out ${OUT_DIR}/dlk1_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/dlx5_extracted.fa -db ${DB_DIR}/dlx5_cluster -out ${OUT_DIR}/dlx5_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/dscam_extracted.fa -db ${DB_DIR}/dscam_cluster -out ${OUT_DIR}/dscam_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/gab1_extracted.fa -db ${DB_DIR}/gab1_cluster -out ${OUT_DIR}/gab1_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/gatm_extracted.fa -db ${DB_DIR}/gatm_cluster -out ${OUT_DIR}/gatm_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/glis3_extracted.fa -db ${DB_DIR}/glis3_cluster -out ${OUT_DIR}/glis3_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/grb10_extracted.fa -db ${DB_DIR}/grb10_cluster -out ${OUT_DIR}/grb10_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/h13_extracted.fa -db ${DB_DIR}/h13_cluster -out ${OUT_DIR}/h13_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/htr2a_extracted.fa -db ${DB_DIR}/htr2a_cluster -out ${OUT_DIR}/htr2a_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/igf2_extracted.fa -db ${DB_DIR}/igf2_cluster -out ${OUT_DIR}/igf2_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/igf2r_extracted.fa -db ${DB_DIR}/igf2r_cluster -out ${OUT_DIR}/igf2r_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/impact_extracted.fa -db ${DB_DIR}/impact_cluster -out ${OUT_DIR}/impact_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/lin28b_extracted.fa -db ${DB_DIR}/lin28b_cluster -out ${OUT_DIR}/lin28b_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/lrrtm1_extracted.fa -db ${DB_DIR}/lrrtm1_cluster -out ${OUT_DIR}/lrrtm1_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/naa60_extracted.fa -db ${DB_DIR}/naa60_cluster -out ${OUT_DIR}/naa60_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/osbpl5_extracted.fa -db ${DB_DIR}/osbpl5_cluster -out ${OUT_DIR}/osbpl5_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/plagl1_extracted.fa -db ${DB_DIR}/plagl1_cluster -out ${OUT_DIR}/plagl1_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/pon2_extracted.fa -db ${DB_DIR}/pon2_cluster -out ${OUT_DIR}/pon2_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/pon3_extracted.fa -db ${DB_DIR}/pon3_cluster -out ${OUT_DIR}/pon3_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/rb1_extracted.fa -db ${DB_DIR}/rb1_cluster -out ${OUT_DIR}/rb1_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/sfmbt2_extracted.fa -db ${DB_DIR}/sfmbt2_cluster -out ${OUT_DIR}/sfmbt2_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/slc38a4_extracted.fa -db ${DB_DIR}/slc38a4_cluster -out ${OUT_DIR}/slc38a4_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/tssc4_extracted.fa -db ${DB_DIR}/tssc4_cluster -out ${OUT_DIR}/tssc4_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/zc3h12c_extracted.fa -db ${DB_DIR}/zc3h12c_cluster -out ${OUT_DIR}/zc3h12c_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/zfat_extracted.fa -db ${DB_DIR}/zfat_cluster -out ${OUT_DIR}/zfat_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/zim2_extracted.fa -db ${DB_DIR}/zim2_cluster -out ${OUT_DIR}/zim2_blast_results.txt -evalue 1e-7 -outfmt 6
+blastp -query ${QUERY_DIR}/znf597_extracted.fa -db ${DB_DIR}/znf597_cluster -out ${OUT_DIR}/znf597_blast_results.txt -evalue 1e-7 -outfmt 6
+
+
+echo "BLAST search completed for ampd3. Results are saved in ${OUT_DIR}/ampd3_blast_results.txt"
+
+# outputfile: 9.final_blast.zip
+
+# Note: The parameter of E value was programmed as 1e-7 for the precised homologoues sequences, and outformat was set as 6.
