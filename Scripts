@@ -458,3 +458,5 @@ align_sequences(input_dir, output_dir)
 python seq_align01.py                                    #saved filename of the above python script
 
 echo "done prcoessing"
+
+#output file: 12. aligned_sequences.zip
