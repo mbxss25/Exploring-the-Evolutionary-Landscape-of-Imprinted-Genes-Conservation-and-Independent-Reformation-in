@@ -219,6 +219,6 @@ echo "Successfully separated entries containing 'ampd3' into $output_file"
 
 Note: This code is just for single file, executed manually for each and every gene for 100% compliance.
 
-Output file: 7. merged_cluster.zip (This is directory where the output of above code is stored by the name of "ampd3_cluster")
+Output file: 7. merged_cluster.zip (This is directory where the output of above code is stored by the name of "ampd3_cluster", and similar genes utilized in study.)
 
 ---------------------------------------------------------
