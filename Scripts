@@ -1,4 +1,4 @@
-##for replacing ">" in the aceession number with ">speciesname" for the ease of identifaction that sequnce belongs to which species.
+##for replacing ">" in the aceession number with ">speciesname" and "|" with "_"for the ease of identifaction that sequnce belongs to which species.
 
 #!/bin/bash
 
@@ -14,8 +14,8 @@
 #SBATCH --mail-user=mbxss25@exmail.nottingham.ac.uk                   #replace with your username
 
 # Directory containing your TXT files
-input_dir="/Users/apple/Desktop/dom/subject_db_copy"                  #path of directory where file are stored conating accession numbers
-output_dir="/Users/apple/Desktop/dom/new"                             #path of directory where you wish to store new files.
+input_dir="/mbxss25/data/dom/subject_dborg"                  #path of directory where file are stored conating accession numbers
+output_dir="/mbxss25/data/dom/subject_db"                             #path of directory where you wish to store new files.
 mkdir -p "$output_dir"                                                # Ensure the output directory exists
 
 # Process each .txt file in the directory
