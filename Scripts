@@ -460,3 +460,12 @@ python seq_align01.py                                    #saved filename of the 
 echo "done prcoessing"
 
 #output file: 12. aligned_sequences.zip
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+#to built the phylogenetic trees, utilized FigTree.
+
+#Intallation of IQtree is pre-requisite 
+
+#
+
+
