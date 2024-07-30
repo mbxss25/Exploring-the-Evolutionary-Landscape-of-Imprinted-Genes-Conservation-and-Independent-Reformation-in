@@ -403,4 +403,4 @@ python cluster_ready.py
 
 echo "done prcoessing"
 
-#output file: 
+#output file: 10. extracted sequences after blast complete_gene_cluster.fasta
