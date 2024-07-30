@@ -511,4 +511,4 @@ echo "All genetic trees have been built and are stored in $OUTPUT_DIR."
 #Note: we extracted the branch length and uploaded branch lengths of all gene trees in branch_length_data.docx, which is uploaded on this repository
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 #FigTree vizualization
-#no code for those, however vizualizations are uploded on this repository as 
+#no code for those, however vizualizations are uploded on this repository as figtree_vizuals.zip
