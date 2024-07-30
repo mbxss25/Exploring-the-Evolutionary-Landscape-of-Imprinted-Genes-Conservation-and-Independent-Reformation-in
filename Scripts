@@ -407,6 +407,7 @@ echo "done prcoessing"
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # installation of MAFFT is pre-requisite 
+MAFFT: conda install bioconda::mafft
 
 # for the sequnce assembly of all the homologoues sequences.
 
