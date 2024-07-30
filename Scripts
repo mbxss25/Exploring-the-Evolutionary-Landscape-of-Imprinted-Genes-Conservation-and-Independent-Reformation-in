@@ -3246,7 +3246,7 @@ imprinted_vs_others <- compare_groups("Imprinted/non-imprinted", "Others")
 print(imprinted_vs_others)
 
 ```
-#The output is saved in the .CSV formagt which is upload on this repository as 
+#The output is saved in the .CSV formagt which is upload on this repository as others_vs_impnonimp_ANOVA.csv
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------
