@@ -331,9 +331,76 @@ blastp -query ${QUERY_DIR}/zfat_extracted.fa -db ${DB_DIR}/zfat_cluster -out ${O
 blastp -query ${QUERY_DIR}/zim2_extracted.fa -db ${DB_DIR}/zim2_cluster -out ${OUT_DIR}/zim2_blast_results.txt -evalue 1e-7 -outfmt 6
 blastp -query ${QUERY_DIR}/znf597_extracted.fa -db ${DB_DIR}/znf597_cluster -out ${OUT_DIR}/znf597_blast_results.txt -evalue 1e-7 -outfmt 6
 
-
 echo "BLAST search completed for ampd3. Results are saved in ${OUT_DIR}/ampd3_blast_results.txt"
 
 # outputfile: 9.final_blast.zip
 
 # Note: The parameter of E value was programmed as 1e-7 for the precised homologoues sequences, and outformat was set as 6.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# To extract the homologoues sequences which show hits in BLAST.
+
+import os
+from Bio import SeqIO
+import pandas as pd
+
+def extract_sequences(subject_dir, blast_results_dir, output_dir):
+    # Ensure the output directory exists
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Iterate through each BLAST result file in the directory
+    for blast_file in os.listdir(blast_results_dir):
+        if blast_file.endswith('.txt'):
+            gene_cluster = blast_file.replace('_blast_results_filtered.txt', '')  # Adjust the replacement to match the actual file naming
+            fasta_file = os.path.join(subject_dir, f"{gene_cluster}_cluster.fasta")
+            output_fasta = os.path.join(output_dir, f"{gene_cluster}_final.fasta")
+            
+            # Check if the FASTA file exists before proceeding
+            if not os.path.exists(fasta_file):
+                print(f"No FASTA file found for {fasta_file}")
+                continue
+            
+            # Read the BLAST results to get the list of sequence IDs
+            blast_df = pd.read_csv(os.path.join(blast_results_dir, blast_file), sep='\t', header=None, usecols=[1])
+            blast_df.columns = ['sseqid']
+            accession_numbers = set(blast_df['sseqid'])
+            
+            # Load the sequences from the FASTA file
+            sequences_to_write = []
+            for seq in SeqIO.parse(fasta_file, 'fasta'):
+                if seq.id in accession_numbers:
+                    sequences_to_write.append(seq)
+                
+            # Write the filtered sequences to the output FASTA file
+            SeqIO.write(sequences_to_write, output_fasta, 'fasta')
+
+# Define the directories
+subject_dir = './merged_clusters'                #seperate gene cluster containing sequences for each species
+blast_results_dir = './final_blast'              #hits of the homologoues sequences
+output_dir = './ready_clusters'                  #new directory to store Homologoues sequences. 
+
+# Extract sequences
+extract_sequences(subject_dir, blast_results_dir, output_dir)
+
+#the above python script was saved by the name of cluster_ready.py
+
+#to execute the above script below sbatch job is submitted.
+
+#!/bin/bash
+
+#SBATCH --partition=defq
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=50g
+#SBATCH --time=10:00:00
+#SBATCH --job-name=homologues
+#SBATCH --output=/gpfs01/home/mbxss25/slurm-%x-%j.out
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=mbxss25@exmail.nottingham.ac.uk
+
+python cluster_ready.py
+
+echo "done prcoessing"
+
+#output file: 
