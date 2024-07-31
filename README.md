@@ -76,21 +76,38 @@ FigTree: http://tree.bio.ed.ac.uk/software/figtree/
 ## Uploaded files 
 
 1. selected_genes.zip
+ 
 2. query_seqs.zip
+
 3_subject_dborg.zip
+
 4_subject_db.zip
+
 5_aa_data.zip
+
 6_merged_all_aminoacids.fasta.zip
+
 7. merged_clusters.zip
+   
 8. new_blastmkdata.zip
-9. final_blast.zip
+   
+9.final_blast.zip
+
 11. ready_clusters (homologous seqs).zip
+    
 12. aligned_sequences.zip
+    
 13. output_trees.zip
-15. final_scripts.zip
-16.branch_lenght_data.docx
-17.chi-sq_test_data.csv
-18.figtree_vizuals.zip
-19.others_vs_impnonimp_ANOVA.csv
-20.gene_set (imprinting status of the genes in species collected from geneimprinting.com)
+    
+14. final_scripts.zip
+    
+15.branch_lenght_data.docx
+
+16.chi-sq_test_data.csv
+
+17.figtree_vizuals.zip
+
+18.others_vs_impnonimp_ANOVA.csv
+
+19.gene_set (imprinting status of the genes in species collected from geneimprinting.com)
 
