@@ -1,4 +1,4 @@
-## Evolution of Genomically Imprinted Gene Clusters in Mammals
+## Exploring the Evolutionary Landscape of Imprinted Genes: Conservation and Independent Reformation in Diverse species
 Bioinformatics Individual Research Project (LIFE4137 UNUK) (SUM1 23-24)
 
 NAME: Sahil Shelote
